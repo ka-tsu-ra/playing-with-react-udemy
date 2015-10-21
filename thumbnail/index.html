@@ -35,7 +35,7 @@
           <h3>{this.props.header}</h3>
           <p>{this.props.description}</p>
           <p>
-            < Badge />
+            < Badge title={this.props.title} count={this.props.count} />
           </p>
         </div>
       </div>
@@ -43,7 +43,7 @@
   });
 
   var options = {
-    title: 'Inbox',
+    title: 'See Tutorials',
     count: 32,
     header: 'Learn React',
     description: 'OK',
