@@ -1,0 +1,81 @@
+<head>
+  <script src="http://fb.me/react-0.13.0.js"></script>
+  <script src="http://fb.me/JSXTransformer-0.13.0.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-5 target">
+      </div>
+    </div>
+  </div>
+
+</body>
+
+<script type="text/jsx">
+  // Define a class i.e. defines component. Must be instantiated and rendered.
+  // The class is like a cookie cutter - it can't be rendered on the page itself.
+  // It needs to be instantiated first. The cookie is rendered on the page.
+
+  var Badge = React.createClass({
+    render: function() {
+      return <button className="btn btn-primary" type="button">
+        {this.props.title} <span className="badge">{this.props.count}</span>
+      </button>
+    }
+  });
+
+  var ThumbnailList = React.createClass({
+    render: function() {
+      var list = this.props.thumbnailData.map(function(thumbnailProps){
+        return < Thumbnail {...thumbnailProps}/>
+        // This shortcut passes in all of the props for each Thumbnail created. So each one gets its relevant props.
+        // Works by refering to the placeholder 'thumbnailProps' used in the map function.
+      })
+      return <div>{list}</div>
+    }
+  });
+
+  var Thumbnail = React.createClass({
+    render: function() {
+      return <div className="thumbnail">
+        <img src={this.props.imageUrl} />
+        <div className="caption">
+          <h3>{this.props.header}</h3>
+          <p>{this.props.description}</p>
+          <p>
+            < Badge title={this.props.title} count={this.props.count} />
+          </p>
+        </div>
+      </div>
+    }
+  });
+
+  // This is the data that becomes the props to make multiple thumbnail components.
+  // Before, it was just one object. Now for multiple components it is converted into an arragy of objects.
+  // Make it easier to deal with by wrapping that in another object with the key 'thumbnailData'
+  // That means you can access the whole array in the props object by specifying this.props.thumbnailData.
+
+  var options = {
+    thumbnailData: [{
+      title: 'Show Animals',
+      count: 32,
+      header: 'Katsuraku',
+      description: 'OK',
+      imageUrl: 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTdJhYyNuFmDQPzZH7R5wQvliIZnATy8a7u_rEmXuCsZ3VZfQco3_gneA'
+    },{
+      title: 'Shose Courses',
+      count: 25,
+      header: 'Pikachu',
+      description: 'OK',
+      imageUrl: 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTdJhYyNuFmDQPzZH7R5wQvliIZnATy8a7u_rEmXuCsZ3VZfQco3_gneA'
+    }]
+  };
+  // React, please create an instance of this class and render that
+  var element = React.createElement(ThumbnailList, options);
+
+  // React, after you render this class, please place it in my body tag.
+  React.render(element, document.querySelector('.container'));
+</script>
