@@ -16,14 +16,24 @@
 
   var Badge = React.createClass({
     render: function() {
-      return <button class="btn btn-primary" type="button">
-        Messages <span class="badge">4</span>
+      return <button className="btn btn-primary" type="button">
+        {this.props.title} <span className="badge">{this.props.count}</span>
       </button>
-    }
+    },
+
+    // getInitialState: function() {
+    //   return {
+    //     count: 0
+    //   }
+    // }
   });
 
+  var options = {
+    title: 'Inbox',
+    count: 32
+  };
   // React, please create an instance of this class and render that
-  var element = React.createElement(Badge);
+  var element = React.createElement(Badge, options);
 
   // React, after you render this class, please place it in my body tag.
 React.render(element, document.body);
