@@ -1,0 +1,30 @@
+<head>
+  <script src="http://fb.me/react-0.13.0.js"></script>
+  <script src="http://fb.me/JSXTransformer-0.13.0.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script> -->
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+</head>
+<body>
+</body>
+
+<script type="text/jsx">
+  // Define a class i.e. defines component. Must be instantiated and rendered.
+  // The class is like a cookie cutter - it can't be rendered on the page itself.
+  // It needs to be instantiated first. The cookie is rendered on the page.
+
+  var Badge = React.createClass({
+    render: function() {
+      return <button class="btn btn-primary" type="button">
+        Messages <span class="badge">4</span>
+      </button>
+    }
+  });
+
+  // React, please create an instance of this class and render that
+  var element = React.createElement(Badge);
+
+  // React, after you render this class, please place it in my body tag.
+React.render(element, document.body);
+</script>

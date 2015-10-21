@@ -1,0 +1,28 @@
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
+</head>
+<body>
+</body>
+
+<script type="text/jsx">
+  // Define a class i.e. defines component. Must be instantiated and rendered. 
+  // The class is like a cookie cutter - it can't be rendered on the page itself. 
+  // It needs to be instantiated first. The cookie is rendered on the page.
+
+  var HelloWorld = React.createClass({
+    render: function() {
+      return <div>
+	Hello World!
+      </div>  
+    }
+  });
+
+  // React, please create an instance of this class and render that
+  var element = React.createElement(HelloWorld);
+
+  // React, after you render this class, please place it in my body tag.
+React.render(element, document.body);  
+</script>
+
+
