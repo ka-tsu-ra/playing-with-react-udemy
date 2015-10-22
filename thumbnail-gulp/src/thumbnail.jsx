@@ -1,4 +1,7 @@
-var Thumbnail = React.createClass({
+var React = require('react'); // require with keyword for modules
+var Badge = require('./badge'); // to require code from other components I write, have to give the path.
+
+module.exports = React.createClass({
   render: function() {
     return <div className="thumbnail">
       <img src={this.props.imageUrl} />
