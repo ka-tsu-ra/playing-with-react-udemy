@@ -6,13 +6,14 @@ var ListItem = require('./list-item');
 
 module.exports = React.createClass({
   handleClick: function() {
-    alert('hello from dropdown');
+    this.setState({open: !this.state.open});
   },
 
   getInitialState: function() {
     return { open: false }
     // Creates an open object in the state of Dropdown. Now this.state.open exists and it's set to false initially.
   },
+
   // gets run only once, when the component gets rendered.
   render: function() {
     // items comes from the options object
