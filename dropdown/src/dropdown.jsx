@@ -15,7 +15,10 @@ module.exports = React.createClass({
   },
 
   handleItemClick: function(item) {
-    console.log(item);
+    this.setState({
+      open: false,
+      itemTitle: item
+    })
   },
   // gets run only once, when the component gets rendered.
   render: function() {
@@ -31,7 +34,7 @@ module.exports = React.createClass({
       <Button
         whenClicked={this.handleClick}
         className="btn-default"
-        title={this.props.title}
+        title={this.state.itemTitle || this.props.title}
         subTitleClassName="caret"
         />
       <ul className={"dropdown-menu " + (this.state.open ? "show" : "") }>
