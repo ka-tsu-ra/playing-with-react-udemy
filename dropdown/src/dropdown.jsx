@@ -8,6 +8,12 @@ module.exports = React.createClass({
   handleClick: function() {
     alert('hello from dropdown');
   },
+
+  getInitialState: function() {
+    return { open: false }
+    // Creates an open object in the state of Dropdown. Now this.state.open exists and it's set to false initially.
+  },
+  // gets run only once, when the component gets rendered.
   render: function() {
     // items comes from the options object
     var list = this.props.items.map(function(item){
@@ -24,13 +30,14 @@ module.exports = React.createClass({
         title={this.props.title}
         subTitleClassName="caret"
         />
-      <ul>
+      <ul className={"dropdown-menu " + (this.state.open ? "show" : "") }>
         {list}
       </ul>
     </div>
 
   }
-
+  // To display the items in the dropdown the class has to be "dropdown-menu show". This adds the 'show' part
+  // only if the 'open' state of the Dropdown component is truthy.
 })
 
 // Button component onClick outcome is set to this.props.whenClicked, so when the Dropdown component renders a Button inside it,
